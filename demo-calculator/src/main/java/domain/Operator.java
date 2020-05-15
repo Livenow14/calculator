@@ -13,7 +13,7 @@ public class Operator {
     public List<String> getCalcs() {
         return calcs;
     }
-    public String  getFirstCalc(){
+    public String removeFirstCalc(){
         return calcs.remove(0);
     }
 

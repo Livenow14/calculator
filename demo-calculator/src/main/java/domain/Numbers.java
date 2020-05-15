@@ -1,6 +1,5 @@
 package domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -13,11 +12,11 @@ public class Numbers {
     public List<Long> getNumbers() {
         return numbers;
     }
-    public Long getFirstNum(){
+    public Long removeFirstNum(){
         return numbers.remove(0);
     }
 
-    public void addFirstNum(Long num){
+    public void addNumFirst(Long num){
          numbers.add(0,num);
     }
 

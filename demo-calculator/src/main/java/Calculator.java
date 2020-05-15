@@ -15,7 +15,7 @@ public class Calculator {
 
         Operator operator = new Operator(splitNumOperator.splitOperator());                             //사칙연산 추출
 
-        System.out.println( "게산 값 : "+ Operate.calculate(operator, numbers));
+        System.out.println( "게산 값 : "+ Operate.calculate(operator, numbers));                       //결과 값 계산
 
 
 

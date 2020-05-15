@@ -21,13 +21,13 @@ public enum Operate {
         this.expression = expression;
     }
 
-    public static Long calculate(Operator operator,Numbers numbers) {
-
-        for (int i = 0; i < operator.getCalcs().size() - 1; i++) {
-            numbers.addFirstNum(getOperate(operator.getFirstCalc()).expression.apply(numbers.getFirstNum(), numbers.getFirstNum()));
+    public static Long calculate(Operator operator, Numbers numbers) {
+        long result = 0;
+        while (!operator.getCalcs().isEmpty()) {
+            result = getOperate(operator.removeFirstCalc()).expression.apply(numbers.removeFirstNum(), numbers.removeFirstNum());
+            numbers.addNumFirst(result);
         }
-            return getOperate(operator.getFirstCalc()).expression.apply(numbers.getFirstNum(), numbers.getFirstNum());
-
+        return result;
     }
 
     private static Operate getOperate(String operator) {
@@ -36,4 +36,6 @@ public enum Operate {
                 .findFirst().orElseThrow(() -> new IllegalArgumentException("올바른 연산자가 아닙니다."));
         return operate;
     }
+
+
 }
