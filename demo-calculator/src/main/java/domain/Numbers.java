@@ -13,4 +13,12 @@ public class Numbers {
     public List<Long> getNumbers() {
         return numbers;
     }
+    public Long getFirstNum(){
+        return numbers.remove(0);
+    }
+
+    public void addFirstNum(Long num){
+         numbers.add(0,num);
+    }
+
 }

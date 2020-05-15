@@ -1,6 +1,7 @@
-import domain.Calc;
+import domain.Operator;
 import domain.Numbers;
-import uitl.SplitNumString;
+import uitl.Operate;
+import uitl.SplitNumOperator;
 
 
 import java.util.Scanner;
@@ -8,13 +9,16 @@ import java.util.Scanner;
 public class Calculator {
 
     public void run() {
-        SplitNumString splitNumString = new SplitNumString(new Scanner(System.in));
+        SplitNumOperator splitNumOperator = new SplitNumOperator(new Scanner(System.in));
 
-        Numbers numbers = new Numbers(splitNumString.splitNum());
-        System.out.println("numbers.getNumbers() = " + numbers.getNumbers());
+        Numbers numbers = new Numbers(splitNumOperator.splitNum());                                 //숫자 추출
 
-        Calc calc = new Calc(splitNumString.splitCalc());
-        System.out.println("calc.getCalcs() = " + calc.getCalcs());
+        Operator operator = new Operator(splitNumOperator.splitOperator());                             //사칙연산 추출
+
+        System.out.println( "게산 값 : "+ Operate.calculate(operator, numbers));
+
+
+
 
 
     }

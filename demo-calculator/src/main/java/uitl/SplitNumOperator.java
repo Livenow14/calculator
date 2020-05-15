@@ -5,12 +5,12 @@ import domain.Numbers;
 import java.util.*;
 import java.util.stream.Stream;
 
-public class SplitNumString {
+public class SplitNumOperator {
 
     private Scanner scanner;
     private String [] str;
 
-    public SplitNumString(Scanner scanner) {
+    public SplitNumOperator(Scanner scanner) {
         this.scanner = scanner;
         str = scanner.nextLine().split(" ");
     }
@@ -21,7 +21,7 @@ public class SplitNumString {
         return tmp;
     }
 
-    public List<String> splitCalc() {
+    public List<String> splitOperator() {
         List<String> tmp = new ArrayList<>();
         Stream.iterate(1, n->n+2).limit(str.length/2).forEach(t -> tmp.add(str[t]));
         return tmp;
