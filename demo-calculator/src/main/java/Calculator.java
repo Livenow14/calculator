@@ -12,15 +12,9 @@ public class Calculator {
         SplitNumOperator splitNumOperator = new SplitNumOperator(new Scanner(System.in));
 
         Numbers numbers = new Numbers(splitNumOperator.splitNum());                                 //숫자 추출
-
         Operator operator = new Operator(splitNumOperator.splitOperator());                             //사칙연산 추출
 
         System.out.println( "게산 값 : "+ Operate.calculate(operator, numbers));                       //결과 값 계산
-
-
-
-
-
     }
 
 }

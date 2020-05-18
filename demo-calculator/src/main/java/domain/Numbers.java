@@ -9,10 +9,12 @@ public class Numbers {
     public Numbers(List<Long> numbers) {
         this.numbers = numbers;
     }
+
     public List<Long> getNumbers() {
         return numbers;
     }
-    public Long removeFirstNum(){
+
+    public Long getNextNum(){
         return numbers.remove(0);
     }
 

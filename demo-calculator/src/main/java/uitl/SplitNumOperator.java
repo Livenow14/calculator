@@ -1,67 +1,58 @@
 package uitl;
 
-import domain.Numbers;
-
-import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 public class SplitNumOperator {
-
-    private String [] str;
+    private List<String> str;
 
     public SplitNumOperator(Scanner scanner) {
-        str = scanner.nextLine().split(" ");
+        String inputValue = scanner.nextLine();
+        checkEmpty(inputValue);
+        str = Arrays.asList(inputValue.split(" "));
     }
 
-/*    public List<Long> splitNum() {
-        List<Long> tmp = new ArrayList<>();
-        Stream.iterate(0, n->n+2).limit(str.length/2 + 1 ).forEach(t -> tmp.add( Long.parseLong(str[t])));
-        return tmp;
+    private void checkEmpty(String str) {
+        if (str.isEmpty()) {
+            throw new NullPointerException("아무런 계산이 들어오지 않았습니다.");
+        }
     }
 
-    public List<String> splitOperator() {
-        List<String> tmp = new ArrayList<>();
-        Stream.iterate(1, n->n+2).limit(str.length/2).forEach(t -> tmp.add(str[t]));
-        return tmp;
-    }*/
     public List<Long> splitNum() {
-        List<Long> tmp = new ArrayList<>();
-        Stream.iterate(0, n->n+2).limit(str.length/2 +1 ).forEach(t -> tmp.add( Long.parseLong(str[t])));
-        return tmp;
+        List<Long> numbers = new ArrayList<>();
+
+        for (int idx = 0; idx < str.size(); idx += 2) {
+            String number = str.get(idx);
+            checkWrongNum(number);
+            numbers.add(Long.parseLong(number));
+        }
+        return numbers;
+    }
+
+    private void checkWrongNum(String number) {
+        try { Long.parseLong(number);
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("숫자가 아닌 문자가 입력되었습니다.");
+        }
     }
 
     public List<String> splitOperator() {
-        List<String> tmp = new ArrayList<>();
-        Stream.iterate(1, n->n+2).limit(str.length/2).forEach(t -> tmp.add(str[t]));
-        return tmp;
+        List<String> operators = new ArrayList<>();
+
+        for(int idx =1; idx<str.size(); idx+=2 ){
+            String operator = str.get(idx);
+            checkWrongOperator(operator);
+            operators.add(operator);
+        }
+        return operators;
     }
 
-/*    public void addExceptionChk (int num) {
-
+    private void checkWrongOperator(String operator) {
         try {
 
-        } catch () {
-
-        }
-    }*/
-
-
-
-    public interface ExceptionFunction<T, R> {
-        R apply(T r) throws Exception;
-        public static <T, R> Function<T, R> wrap(ExceptionFunction<T, R> f) {
-            return (T r) -> {
-                try {
-                    return f.apply(r);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            };
-        }
+        }catch (Str)
     }
-
-
-
 }
 

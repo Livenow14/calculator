@@ -5,7 +5,6 @@ import domain.Operator;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 public enum Operate {
     DIVIDE("/", (a, b) -> a / b),
@@ -22,10 +21,11 @@ public enum Operate {
     }
 
     public static Long calculate(Operator operator, Numbers numbers) {
-        long result = 0;
-        while (!operator.getCalcs().isEmpty()) {
-            result = getOperate(operator.removeFirstCalc()).expression.apply(numbers.removeFirstNum(), numbers.removeFirstNum());
-            numbers.addNumFirst(result);
+        long result = numbers.getNextNum();
+        while (!operator.isEmpty()) {
+            result = getOperate(operator.getNextCalc())
+                    .expression
+                    .apply(result, numbers.getNextNum());
         }
         return result;
     }
@@ -33,9 +33,8 @@ public enum Operate {
     private static Operate getOperate(String operator) {
         Operate operate = Arrays.stream(values())
                 .filter(o -> o.operator.equals(operator))
-                .findFirst().orElseThrow(() -> new IllegalArgumentException("올바른 연산자가 아닙니다."));
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("올바른 연산자가 아닙니다."));
         return operate;
     }
-
-
 }

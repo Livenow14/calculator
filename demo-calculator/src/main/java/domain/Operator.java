@@ -13,8 +13,13 @@ public class Operator {
     public List<String> getCalcs() {
         return calcs;
     }
-    public String removeFirstCalc(){
+
+    public String getNextCalc(){
         return calcs.remove(0);
+    }
+
+    public boolean isEmpty(){
+        return calcs.isEmpty();
     }
 
 }
