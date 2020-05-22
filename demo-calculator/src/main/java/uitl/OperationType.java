@@ -6,7 +6,8 @@ import domain.Operator;
 import java.util.Arrays;
 import java.util.function.BiFunction;
 
-public enum Operate {
+public enum OperationType {
+
     DIVIDE("/", (a, b) -> a / b),
     MINUS("-", (a, b) -> a - b),
     MULTI("*", (a, b) -> a * b),
@@ -15,7 +16,7 @@ public enum Operate {
     private String operator;
     private BiFunction<Long, Long, Long> expression;
 
-    Operate(String operator, BiFunction<Long, Long, Long> expression) {
+    OperationType(String operator, BiFunction<Long, Long, Long> expression) {
         this.operator = operator;
         this.expression = expression;
     }
@@ -30,11 +31,11 @@ public enum Operate {
         return result;
     }
 
-    private static Operate getOperate(String operator) {
-        Operate operate = Arrays.stream(values())
+    private static OperationType getOperate(String operator) {
+        OperationType operationType = Arrays.stream(values())
                 .filter(o -> o.operator.equals(operator))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("올바른 연산자가 아닙니다."));
-        return operate;
+        return operationType;
     }
 }

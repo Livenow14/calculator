@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SplitNumOperator {
+
     private List<String> str;
 
     public SplitNumOperator(Scanner scanner) {
@@ -22,7 +23,6 @@ public class SplitNumOperator {
 
     public List<Long> splitNum() {
         List<Long> numbers = new ArrayList<>();
-
         for (int idx = 0; idx < str.size(); idx += 2) {
             String number = str.get(idx);
             checkWrongNum(number);
@@ -32,7 +32,8 @@ public class SplitNumOperator {
     }
 
     private void checkWrongNum(String number) {
-        try { Long.parseLong(number);
+        try {
+            Long.parseLong(number);
         } catch (NumberFormatException e) {
             throw new NumberFormatException("숫자가 아닌 문자가 입력되었습니다.");
         }
@@ -40,19 +41,13 @@ public class SplitNumOperator {
 
     public List<String> splitOperator() {
         List<String> operators = new ArrayList<>();
-
-        for(int idx =1; idx<str.size(); idx+=2 ){
+        for (int idx = 1; idx < str.size(); idx += 2) {
             String operator = str.get(idx);
-            checkWrongOperator(operator);
             operators.add(operator);
         }
         return operators;
     }
 
-    private void checkWrongOperator(String operator) {
-        try {
 
-        }catch (Str)
-    }
 }
 
