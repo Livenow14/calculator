@@ -1,6 +1,6 @@
 package uitl;
 
-import domain.Numbers;
+import domain.Operand;
 import domain.Operator;
 
 import java.util.Arrays;
@@ -21,12 +21,12 @@ public enum OperationType {
         this.expression = expression;
     }
 
-    public static Long calculate(Operator operator, Numbers numbers) {
-        long result = numbers.getNextNum();
+    public static Long calculate(Operator operator, Operand operand) {
+        long result = operand.getNextOperand();
         while (!operator.isEmpty()) {
             result = getOperate(operator.getNextCalc())
                     .expression
-                    .apply(result, numbers.getNextNum());
+                    .apply(result, operand.getNextOperand());
         }
         return result;
     }

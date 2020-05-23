@@ -4,18 +4,17 @@ import java.util.List;
 
 public class Operator {
 
-    private List<String> calcs;
+    private List<String> operators;
 
-    public Operator(List<String> calcs) {
-        this.calcs = calcs;
+    public Operator(List<String> operators) {
+        this.operators = operators;
     }
 
     public String getNextCalc(){
-        return calcs.remove(0);
+        return operators.remove(0);
     }
 
     public boolean isEmpty(){
-        return calcs.isEmpty();
+        return operators.isEmpty();
     }
-
 }

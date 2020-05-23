@@ -22,18 +22,18 @@ public class SplitNumOperator {
     }
 
     public List<Long> splitNum() {
-        List<Long> numbers = new ArrayList<>();
+        List<Long> operands = new ArrayList<>();
         for (int idx = 0; idx < str.size(); idx += 2) {
-            String number = str.get(idx);
-            checkWrongNum(number);
-            numbers.add(Long.parseLong(number));
+            String operand = str.get(idx);
+            checkWrongNum(operand);
+            operands.add(Long.parseLong(operand));
         }
-        return numbers;
+        return operands;
     }
 
-    private void checkWrongNum(String number) {
+    private void checkWrongNum(String operand) {
         try {
-            Long.parseLong(number);
+            Long.parseLong(operand);
         } catch (NumberFormatException e) {
             throw new NumberFormatException("숫자가 아닌 문자가 입력되었습니다.");
         }
