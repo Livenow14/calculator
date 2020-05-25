@@ -1,16 +1,17 @@
 package uitl;
 
+import domain.Operand;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class SplitNumOperator {
+public class SplitOperandOperator {
 
     private List<String> str;
 
-    public SplitNumOperator(Scanner scanner) {
-        String inputValue = scanner.nextLine();
+    public SplitOperandOperator(String inputValue) {
         checkEmpty(inputValue);
         str = Arrays.asList(inputValue.split(" "));
     }
@@ -21,17 +22,17 @@ public class SplitNumOperator {
         }
     }
 
-    public List<Long> splitNum() {
+    public List<Long> splitOperand() {
         List<Long> operands = new ArrayList<>();
         for (int idx = 0; idx < str.size(); idx += 2) {
             String operand = str.get(idx);
-            checkWrongNum(operand);
+            checkWrongOperand(operand);
             operands.add(Long.parseLong(operand));
         }
         return operands;
     }
 
-    private void checkWrongNum(String operand) {
+    public void checkWrongOperand(String operand) {
         try {
             Long.parseLong(operand);
         } catch (NumberFormatException e) {
@@ -47,7 +48,5 @@ public class SplitNumOperator {
         }
         return operators;
     }
-
-
 }
 
